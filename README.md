@@ -9,7 +9,7 @@ git clone https://github.com/Hindsedrati/docker-project && cd docker-project
 ### Usage
 1. You have to launch bdd services
     ```bash
-    docker-compose up -f docker-compose-bdd.yml -d
+    docker-compose -f docker-compose-bdd.yml up -d
     ```
     This will launch a postgresql database and a pgadmin4 interface to manage it.
     You have now access to a database with these credentials:
@@ -23,7 +23,7 @@ git clone https://github.com/Hindsedrati/docker-project && cd docker-project
 
 2. You have to launch php services
     ```bash
-    docker-compose up -f docker-compose-php.yml -d
+    docker-compose -f docker-compose-php.yml up -d
     ```
    This will launch the php/apache server to preview the website.
 
