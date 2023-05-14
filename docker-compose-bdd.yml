@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgres:
+    image: hindsedrati/postgres
+    ports:
+      - 5432:5432
+  adminer:
+    image: hindsedrati/adminer
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+networks:
+  default:
+    name: bdd-network

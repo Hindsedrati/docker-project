@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  php:
+    image: hindsedrati/php
+    volumes:
+      - ./app:/var/www/html
+      - ./php/vhosts:/etc/apache2/sites-enabled
+    ports:
+      - "8000:80"
+
+  composer:
+    build: hindsedrati/composer
+    volumes:
+      - ./app:/app
+    command: install --ignore-platform-reqs
+    depends_on:
+      - php
+
+networks:
+  default:
+    external:
+      name: bdd-network
