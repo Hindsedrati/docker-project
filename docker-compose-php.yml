@@ -8,14 +8,15 @@ services:
       - ./php/vhosts:/etc/apache2/sites-enabled
     ports:
       - "8000:80"
+    depends_on:
+      - composer
 
   composer:
-    build: hindsedrati/composer
+    image: hindsedrati/composer
     volumes:
       - ./app:/app
-    command: install --ignore-platform-reqs
-    depends_on:
-      - php
+    command: install --optimize-autoloader
+    restart: "no"
 
 networks:
   default:

@@ -1,12 +1,20 @@
-#postgres image
-FROM postgres:latest
-#copy the init.sql file to docker-entrypoint-initdb.d
+FROM alpine:3.17
+
+# Install PostgreSQL
+RUN apk update && apk add --no-cache postgresql
+
+# Copy the init.sql file to the appropriate directory
 COPY init.sql /docker-entrypoint-initdb.d/
-#expose port 5432
+
+# Expose port 5432
 EXPOSE 5432
-#set the environment variable
+
+# Set the environment variables
 ENV POSTGRES_USER postgres
 ENV POSTGRES_PASSWORD postgres
 ENV POSTGRES_DB postgres
+
+# Start PostgreSQL
+CMD ["postgres"]
 
 
